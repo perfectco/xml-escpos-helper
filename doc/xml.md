@@ -10,6 +10,40 @@ This is the root XML element of an ESC/POS template.
 
 If set, enables reverse (upside-down) printing.
 
+## `<page>` Element
+
+Prints its contents as a single page of specified size.
+
+### Attributes
+
+#### `size`
+
+Specifies the size of the page, in dots.
+Must be in "x:y" format, where x specifies the width of the printable area, and y the length.
+Width is perpendicular to the print direction, and length parallel to it; the page size is set independently of the page `orientation`.
+Optonal. If left unset, the printer's default page size will be used.
+
+#### `origin`
+
+Specifies the origin of the page, in dots.
+Must be in "x:y" format, where x specifies the horizontal offset of the printable area, and y the vertical offset.
+Like `size`, these are respective to the physical paper being printed, and unaffected by the page `orientation`.
+Optional. If left unset, the origin will be (0, 0), the top-left.
+
+#### `orientation`
+
+Specifies the direction of text rendered on the page.
+If specified, must be one of the following values:
+
+`orientation=` | Effect
+---------------|-------
+`north`        | Text printed upright on the paper (normal operation).
+`west`         | Text printed with top at left, each subsequent line moving right.
+`south`        | Text printed upside down on the paper, each subsequent line moving upwards.
+`east`         | Text printed with top at right, each subsequent line moving left.
+
+Defaults to `north`.
+
 ## `<align>` Element
 
 Sets the alignment of text contained by this element.
